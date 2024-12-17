@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+data:
+  DATABASE_HOST: "lmsdbs.postgres.database.azure.com"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "lmsdb"
+  PORT: "3000"
+  NODE_ENV: "production"
