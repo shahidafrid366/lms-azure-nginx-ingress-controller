@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lms-ingress
+  namespace: default # Change if your application is in another namespace
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx # Specify the correct Ingress class
+  rules:
+    - host: learning.learnwave.site
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: frontend-service # Replace with your frontend service name
+                port:
+                  number: 80 # Replace with your frontend service port
+          - pathType: Prefix
+            path: /api
+            backend:
+              service:
+                name: backend-service # Replace with your backend service name
+                port:
+                  number: 3000 # Replace with your backend service port
+
